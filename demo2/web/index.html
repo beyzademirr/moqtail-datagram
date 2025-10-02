@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>MOQT V9 End-to-End Demo Player</title>
+  <style>
+    body { 
+      font: 14px/1.4 system-ui, sans-serif; 
+      margin: 20px; 
+      color: #ddd; 
+      background: #111; 
+    }
+    .header {
+      background: #222;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .controls {
+      display: flex; 
+      gap: 15px; 
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover { background: #0052a3; }
+    button:disabled { background: #555; cursor: not-allowed; }
+    #status {
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .status-idle { background: #555; }
+    .status-connecting { background: #cc6600; }
+    .status-connected { background: #006600; }
+    .status-error { background: #cc0000; }
+    
+    .viewer {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .frame-area {
+      flex: 1;
+    }
+    
+    #screen { 
+      border: 2px solid #444; 
+      background: #000; 
+      width: 400px; 
+      height: 300px; 
+      image-rendering: crisp-edges;
+      border-radius: 4px;
+    }
+    
+    .info-panel {
+      width: 300px;
+      background: #222;
+      padding: 15px;
+      border-radius: 8px;
+      height: fit-content;
+    }
+    
+    .stats {
+      margin-bottom: 15px;
+    }
+    
+    .stats h3 {
+      margin: 0 0 10px 0;
+      color: #4a9eff;
+    }
+    
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+      font-size: 13px;
+    }
+    
+    #log { 
+      background: #000;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      white-space: pre-wrap; 
+      padding: 10px;
+      border-radius: 4px;
+      height: 200px;
+      overflow-y: auto;
+      border: 1px solid #333;
+    }
+    
+    .frame-info {
+      margin-top: 10px;
+      padding: 10px;
+      background: #333;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎯 MOQT V9 End-to-End Demo Player</h1>
+    <p>Real WebTransport → V9 Handler → Browser parsing of Draft-11 wire format</p>
+  </div>
+  
+  <div class="controls">
+    <button id="connect">Connect to Server</button>
+    <span id="status" class="status-idle">Idle</span>
+  </div>
+  
+  <div class="viewer">
+    <div class="frame-area">
+      <h3>📺 Video Stream (Track 42)</h3>
+      <canvas id="screen" width="400" height="300"></canvas>
+      <div id="frame-info" class="frame-info">
+        Waiting for connection...
+      </div>
+    </div>
+    
+    <div class="info-panel">
+      <div class="stats">
+        <h3>📊 MOQT Stats</h3>
+        <div class="stat-item">
+          <span>Objects Received:</span>
+          <span id="object-count">0</span>
+        </div>
+        <div class="stat-item">
+          <span>Total Bytes:</span>
+          <span id="bytes-count">0</span>
+        </div>
+        <div class="stat-item">
+          <span>Current Track:</span>
+          <span id="current-track">-</span>
+        </div>
+        <div class="stat-item">
+          <span>Last Group:</span>
+          <span id="last-group">-</span>
+        </div>
+        <div class="stat-item">
+          <span>Last Object:</span>
+          <span id="last-object">-</span>
+        </div>
+        <div class="stat-item">
+          <span>Extensions Parsed:</span>
+          <span id="ext-count">0</span>
+        </div>
+      </div>
+      
+      <h3>📋 Message Log</h3>
+      <div id="log"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./player.js"></script>
+</body>
+</html>

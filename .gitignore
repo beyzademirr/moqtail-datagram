@@ -1,0 +1,90 @@
+# Rust
+/target/
+**/target/
+**/*.rs.bk
+*.pdb
+
+# Cargo
+# Cargo.lock (uncomment if this is a library, keep if this is an application)
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+*.exe
+*.pdb
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+.env.local
+.env.production
+
+# Build outputs
+dist/
+build/
+
+# Demo and test artifacts
+demo2/target/
+demo2/node_modules/
+demo2/dist/
+demo2/.env
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Editor backups
+*~
+.*.swp
+.*.swo
+
+# Local configuration
+config.local.*
